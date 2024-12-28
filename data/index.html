@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html {
+      font-family: Arial;
+      display: inline-block;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 3.0rem;
+    }
+
+    p {
+      font-size: 3.0rem;
+    }
+
+    .units {
+      font-size: 1.2rem;
+    }
+
+    .ds-labels {
+	 font-family: cursive;
+	 font-weight: 600;	
+      font-size: 2.0rem;
+      vertical-align: middle;
+      padding-bottom: 15px;
+    }
+  </style>
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script type="text/javascript" src="/function.js"></script>
+</head>
+
+<body>
+  <h1 "margin:50px;">Главная</h1>
+ <div class="container">
+ <div class="row" style="text-align:center;">
+ <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+   <a class="btn btn-block btn-danger" href="./data.html">Страница управления</a>
+  <p>
+    <i style="color:#059e8a;"></i>
+    <span class="ds-labels">Room Temperature</span>
+    <span id="temperaturec">%TEMPERATUREC%</span>
+    <sup class="units">&deg;C</sup>
+  </p>
+  <p>
+    <i style="color:#059e8a;"></i>
+    <span class="ds-labels">Room Hum</span>
+    <span id="roomhum">%ROOMHUM%</span>
+	<sup class="units">&#37;</sup>
+  </p>
+  <p>
+    <i style="color:#059e8a;"></i>
+    <span class="ds-labels">Soil Hum</span>
+    <span id="soil_hum">%SOILHUM%</span>
+    <sup class="units">&#37;</sup>
+  </p>
+  <p>
+    <i style="color:#059e8a;"></i>
+    <span class="ds-labels">Light work at </span>
+    <span id="light">%LIGHT%</span>
+  </p>
+  </div>
+  </div>
+  </div>
+</body>
+<script>
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("temperaturec").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/temperaturec", true);
+    xhttp.send();
+  }, 10000);
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("light").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/level_light", true);
+    xhttp.send();
+  }, 10000);
+
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("roomhum").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/hum", true);
+    xhttp.send();
+  }, 10000);
+    setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("soil_hum").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/soil_hum", true);
+    xhttp.send();
+  }, 10000);
+</script>
+
+</html>

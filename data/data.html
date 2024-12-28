@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  
+  <script type="text/javascript" src="./function.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Настройки устройства</title>
+</head>
+
+<body onload="load();">
+  <div class="container">
+    <div class="row" style="text-align:center;">
+      <h1 style="margin:50px;">Доп. настройки</h1>
+      <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+        <h5 class="alert-info" id="ssdp_t">{{SSDP}}</h5>
+        <a class="btn btn-block btn-danger" href="./index.html">Главная страница</a>
+        <hr>
+        <div class="alert alert-dismissible alert-warning"><strong>Пожалуйста подключитесь к своему роутеру и укажите первоначальные настройки</strong>
+          Это позволит управлять вашим устройством в локальной сети.</div>
+        <h2>Имя устройства</h2>
+        <input id="ssdp" value="{{SSDP}}" class="form-control" pattern="[0-9a-zA-Zа-яА-Я. ]{1,20}"
+          placeholder="Имя устройства">
+        <input class="btn btn-block btn-success" value="Сохранить" onclick="set_ssdp(this);" type="submit">
+        <hr>
+        <h2>Подключение к WiFi роутеру</h2>
+        <input id="ssid" value="{{ssid}}" class="form-control" pattern="[0-9a-zA-Z.]{1,15}" placeholder="Имя WiFi сети">
+        <input id="password" value="{{password}}" pattern=".{8,15}" onfocus="this.type='text'" type="password"
+          class="form-control" placeholder="Пароль">
+        <input class="btn btn-block btn-success" value="Сохранить" onclick="set_ssid(this);" type="submit">
+        <hr>
+		<div class="col-sm-6">
+            <div class="alert alert-dismissible alert-warning">Здесь вы можете указать новое название WiFi жалюзи и
+              пароль.</div>
+          </div>
+        <h2>Точка доступа</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <input id="ssidap" value="{{ssidAP}}" class="form-control" pattern="[0-9a-zA-Z.]{1,15}"
+              placeholder="Имя WiFi сети">
+            <input id="passwordAp" value="{{passwordAP}}" pattern=".{8,15}" onfocus="this.type='text'" type="password"
+              class="form-control" placeholder="Пароль">
+            <input class="btn btn-block btn-success" value="Сохранить" onclick="set_ssid_ap(this);" type="submit">
+          </div>
+        </div>
+        <hr>
+		 <div class="alert alert-dismissible alert-warning">Укажите настройки устройства,все поля являются обязательными</div>
+        <h2>Настройки устройства:</h2>
+		  <h6>Минимальный допустимый уровень влажности:</h6>
+            <input id="min_Hum" value="{{min_hum}}" class="form-control" pattern="[0-9]{1,3}"
+              placeholder="Минимальный допустимый уровень освещённости:">
+			  <input class="btn btn-block btn-success" value="Сохранить" onclick="set_min_hum(this);" type="submit">
+          <h6>Минимальный допустимый уровень освещённости:</h6>
+            <input id="min_Light" value="{{min_light}}" class="form-control" pattern="[0-9]{1,2}"
+              placeholder="Минимальный допустимый уровень освещённости:">
+			  <input class="btn btn-block btn-success" value="Сохранить" onclick="set_min_light(this);" type="submit">
+		  <h6>Время длительности полива в секундах:</h6>
+            <input id="timeWatering" value="{{time_watering}}" class="form-control" pattern="[0-9]{1,2}"
+              placeholder="Время длительности полива в секундах">
+			  <input class="btn btn-block btn-success" value="Сохранить" onclick="set_time_watering(this);" type="submit">
+		  <h6>Частота проверок уровня влажности(мин.):</h6>
+             <input id="timeHum" value="{{time_hum}}" class="form-control" pattern="[0-9]{1,3}"
+              placeholder="Частота проверок уровня влажности(мин.):">
+			  <input class="btn btn-block btn-success" value="Сохранить" onclick="set_time_hum(this);" type="submit">
+		  <h6>Частота проверок освещённости(мин.):</h6>
+            <input id="timeLight" value="{{time_light}}" class="form-control" pattern="[0-9]{1,3}"
+              placeholder="Частота проверок освещённости(мин.):">
+			  <input class="btn btn-block btn-success" value="Сохранить" onclick="set_time_light(this);" type="submit">
+        <hr>
+        <input class="btn btn-block btn-warning" value="Перезагрузить устройство"
+          onclick="restart(this,'Вы действительно хотите перезагрузить устройство?');" type="submit">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "esp_http_server.h": "c",
+        "random": "c",
+        "mqtt_client.h": "c"
+    }
+}
